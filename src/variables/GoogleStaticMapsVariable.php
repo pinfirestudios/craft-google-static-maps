@@ -69,4 +69,29 @@ class GoogleStaticMapsVariable
 
 		return Html::img($url, $htmlOptions);
 	}
+
+	/**
+	 * Returns an <img> tag inside a <a> with a link to open in Google Maps.
+	 *
+	 * @param int $width
+	 * @param int $height
+	 * @param array $mapParams {@see buildUrl()}
+	 * @param array $htmlOptions additional attributes to add to the <img> tag.
+	 * @return string <a><img> tags.
+	 */
+	public function link(int $width, int $height, array $mapParams, array $linkOptions = [], array $imageOptions = []) : string
+	{
+		$img = $this->img($width, $height, $mapParams, $imageOptions);
+
+		$addr = '';
+		if (isset($linkOptions['address']))
+		{
+			$addr = $linkOptions['address'] . '/';
+			unset($linkOptions['address']);
+		}
+
+		$mapsUrl = "https://www.google.com/maps/search/{$addr}@{$mapParams['center']},{$mapParams['zoom']}z/";
+
+		return Html::a($img, $mapsUrl, $linkOptions);
+	}
 }
