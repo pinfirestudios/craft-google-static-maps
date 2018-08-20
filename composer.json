@@ -1,0 +1,41 @@
+{
+    "name": "pinfirestudios/craft-google-static-maps",
+    "description": "Provides a function to generate a signed URL for the Google Maps Static API",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "google maps",
+		"google maps static api"
+    ],
+    "support": {
+        "docs": "https://github.com/pinfirestudios/craft-google-static-maps/blob/master/README.md",
+        "issues": "https://github.com/pinfirestudios/craft-google-static-maps/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pinfire Studios",
+            "homepage": "http://www.pinfirestudios.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "pinfirestudios\\googlestaticmaps\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Google Static Maps",
+        "handle": "google-static-maps",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/pinfirestudios/craft-google-static-maps/master/CHANGELOG.md",
+        "class": "pinfirestudios\\googlestaticmaps\\GoogleStaticMaps"
+    }
+}

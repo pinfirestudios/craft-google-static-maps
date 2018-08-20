@@ -1,0 +1,36 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Google Static Maps plugin for Craft CMS 3.x
+ *
+ * Google Static Maps Settings.twig
+ *
+ * @author    Pinfire Studios
+ * @copyright Copyright (c) 2018 Pinfire Studios
+ * @link      www.pinfirestudios.com
+ * @package   GoogleStaticMaps
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("pinfirestudios\\googlestaticmaps\\assetbundles\\googlestaticmaps\\GoogleStaticMapsAsset") %}
+
+<p>
+	Get your key and secret <a href="https://developers.google.com/maps/documentation/maps-static/get-api-key" target="_blank">here</a>.
+</p>
+
+{{ forms.textField({
+    label: 'Google Maps API Key',
+    id: 'googleMapsApiKey',
+    name: 'googleMapsApiKey',
+    value: settings['googleMapsApiKey']})
+}}
+
+{{ forms.textField({
+    label: 'Google Maps Static API URL Signing Secert',
+    id: 'googleMapsStaticUrlSigningSecret',
+    name: 'googleMapsStaticUrlSigningSecret',
+    value: settings['googleMapsStaticUrlSigningSecret']})
+}}
