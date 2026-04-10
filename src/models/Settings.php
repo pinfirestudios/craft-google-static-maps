@@ -10,9 +10,6 @@
 
 namespace pinfirestudios\googlestaticmaps\models;
 
-use pinfirestudios\googlestaticmaps\GoogleStaticMaps;
-
-use Craft;
 use craft\base\Model;
 
 /**
@@ -28,12 +25,12 @@ class Settings extends Model
     /**
      * @var string
      */
-	public $googleMapsApiKey;
+    public ?string $googleMapsApiKey = null;
 
 	/**
 	 * @var string
 	 */
-	public $googleMapsStaticUrlSigningSecret;
+    public ?string $googleMapsStaticUrlSigningSecret = null;
 
     // Public Methods
     // =========================================================================
@@ -41,12 +38,12 @@ class Settings extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
-		return [
-			[['googleMapsApiKey', 'googleMapsStaticUrlSigningSecret'], 'required'],
+        return [
+            [['googleMapsApiKey', 'googleMapsStaticUrlSigningSecret'], 'required'],
             ['googleMapsApiKey', 'string'],
-			['googleMapsStaticUrlSigningSecret', 'string'],
+            ['googleMapsStaticUrlSigningSecret', 'string'],
         ];
     }
 }

@@ -14,9 +14,8 @@ use pinfirestudios\googlestaticmaps\variables\GoogleStaticMapsVariable;
 use pinfirestudios\googlestaticmaps\models\Settings;
 
 use Craft;
+use craft\base\Model;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 use craft\web\twig\variables\CraftVariable;
 
 use yii\base\Event;
@@ -37,7 +36,7 @@ class GoogleStaticMaps extends Plugin
     /**
      * @var GoogleStaticMaps
      */
-    public static $plugin;
+    public static GoogleStaticMaps $plugin;
 
     // Public Properties
     // =========================================================================
@@ -45,7 +44,7 @@ class GoogleStaticMaps extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
     // Public Methods
     // =========================================================================
@@ -53,7 +52,7 @@ class GoogleStaticMaps extends Plugin
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;
@@ -65,15 +64,6 @@ class GoogleStaticMaps extends Plugin
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
                 $variable->set('googleStaticMaps', GoogleStaticMapsVariable::class);
-            }
-        );
-
-        Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                }
             }
         );
 
@@ -93,7 +83,7 @@ class GoogleStaticMaps extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
@@ -101,7 +91,7 @@ class GoogleStaticMaps extends Plugin
     /**
      * @inheritdoc
      */
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         return Craft::$app->view->renderTemplate(
             'google-static-maps/settings',

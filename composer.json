@@ -2,7 +2,7 @@
     "name": "pinfirestudios/craft-google-static-maps",
     "description": "Provides a function to generate a signed URL for the Google Maps Static API",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "4.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -23,7 +23,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-RC1"
+        "php": "^8.0.2",
+        "craftcms/cms": "^4.0"
     },
     "autoload": {
         "psr-4": {
